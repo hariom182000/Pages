@@ -1,0 +1,43 @@
+<% layout('layouts/boilerplate') %> 
+
+<div id="cluster-map" >
+
+</div>
+
+<h1 class="mb-4">All Books</h1>
+<ul>
+    <%for(let b of books){%>
+        <div class="card mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<%=b.images[0].url%>" class="img-fluid" alt="">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h5><%=b.title%></h5>
+                        </div>
+                        <div class="card-text">
+                            <%=b.description%>
+                        </div>
+                        <p class="card-text">
+                            <small class="text-muted"><%=b.pages%> pages</small>
+                        </p>
+                        <a href="books/<%=b.id%>" class="btn btn-primary">view book</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+
+        <%}%>
+</ul>
+
+<script>
+    const mapToken='<%-process.env.MAPBOX_TOKEN%>'
+    const books={features:<%-JSON.stringify(books)%>}
+    
+  </script>
+<script src="/javascripts/clusterMap.js"></script>

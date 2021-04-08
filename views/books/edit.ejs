@@ -1,0 +1,55 @@
+<% layout('layouts/boilerplate') %>
+<div class="row">
+    <div class="col-6 offset-3">
+        <h1>edit book</h1>
+    <form action="/books/<%=book._id%>?_method=PUT" method="POST" novalidate class="validation" enctype="multipart/form-data">
+        <div class="mb-3">
+        <label class="form-label "for="title">give title</label>
+        <input class="form-control" type="text" id="title" name="book[title]" value="<%=book.title%>" required>
+        <div class="valid-feedback">looks good</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="author">change author</label>
+            <input class="form-control" type="text" id="author" name="book[author]" value="<%=book.author%>" required>
+            <div class="valid-feedback">looks good</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="description">Description</label>
+            <input class="form-control" type="text" id="description" name="book[description]" value="<%=book.description%>" required>
+            <div class="valid-feedback">looks good</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"for="location">country:</label>
+            <input class="form-control" type="text" id="location" name="book[location]" value="<%=book.location%>" required>
+        </div>   
+        <div class="mb-3">
+            <label class="form-label"for="pages">pages</label>
+            <input class="form-control" type="text" id="pages" name="book[pages]" value="<%=book.pages%>" required>
+            <div class="valid-feedback">looks good</div>
+        </div>    
+        
+        <div class="mb-3">
+            <label for="formFileMultiple" class="form-label"></label>
+            <input class="form-control" type="file" id="formFileMultiple" name="image" multiple>
+        </div>
+         
+        <div class="mb-3">
+            <% book.images.forEach(function(img,i){%>
+                <img src="<%=img.thumbnail%> " class="img-thumbnail" alt="">
+                <div class="form-check-inline">
+                    <input type="checkbox" name="deleteImages[]" value="<%=img.filename %>" id="image-<%=i%> ">
+                </div>
+                <label for="image-<%=i%> ">delete</label>
+            <%}) %> 
+        </div>
+
+
+        <div class="mb-3">
+            <button class="btn btn-info">update book</button>
+        </div>
+        
+    </form>
+    <a href="/books/<%=book._id%>">back to book</a>
+    </div>
+</div>
+    
