@@ -102,8 +102,10 @@ app.use('/books/:id/reviews',reviewRoutes)
 app.get('/',(req,res)=>{
     res.render('home')
 })
-app.listen(3000,()=>{
-    console.log('serving on port 3000')
+
+const port=process.env.PORT||3000
+app.listen(port,()=>{
+    console.log(`serving on port ${port}`)
 })
 
 
