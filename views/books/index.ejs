@@ -4,7 +4,7 @@
 
 </div>
 
-<h1 class="mb-4">All Books</h1>
+<h1 class="mb-4">All Places</h1>
 <ul>
     <%for(let b of books){%>
         <div class="card mb-3">
@@ -21,7 +21,7 @@
                             <%=b.description%>
                         </div>
                         <p class="card-text">
-                            <small class="text-muted"><%=b.pages%> pages</small>
+                            <small class="text-muted"><%=b.pages%> price</small>
                         </p>
                         <a href="books/<%=b.id%>" class="btn btn-primary">view book</a>
                     </div>
